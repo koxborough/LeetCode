@@ -1,0 +1,22 @@
+int lengthOfLastWord(char * s){
+    int sum = 0;
+    int wordlength = 0;
+    int length = strlen(s);
+    
+    for (int i = 0; i < length; i++)
+    {
+        if (s[i] != ' ')
+        {
+            sum++;   
+        }
+        else if (sum != 0)
+        {
+            wordlength = sum;
+            sum = 0;
+        }
+    }
+    if (s[length - 1] != ' ')
+        wordlength = sum;
+    
+    return wordlength;
+}
