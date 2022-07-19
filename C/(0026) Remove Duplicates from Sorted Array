@@ -1,0 +1,34 @@
+void swap(int* nums, int i, int j);
+
+int removeDuplicates(int* nums, int numsSize){
+    int newlength = numsSize;
+    
+    for (int i = 0; i < numsSize - 1; i++)
+    {
+        if (nums[i] == nums[i + 1])
+        {
+            nums[i] = 101;
+            newlength--;
+        }
+    }
+    
+    for (int i = 0; i < numsSize - 1; i++)
+    {
+        for (int j = 0; j < numsSize - i - 1; j++)
+        {
+            if (nums[j] > nums[j + 1])
+            {
+                swap(nums, j, j + 1);
+            }
+        }
+    }
+    
+    return newlength;
+}
+
+void swap(int* nums, int i, int j)
+{
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+}
