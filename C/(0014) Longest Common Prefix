@@ -1,0 +1,18 @@
+char * longestCommonPrefix(char ** strs, int strsSize){
+    char* prefix = malloc(sizeof(char) * (strlen(strs[0]) + 1));
+    strcpy(prefix, strs[0]);
+    
+    for (int i = 1; i < strsSize; i++)
+    {
+        for (int j = 0; j < strlen(prefix); j++)
+        {
+            if (prefix[j] != strs[i][j])
+            {
+                prefix[j] = '\0';
+                break;
+            }
+        }
+    }
+    
+    return prefix;
+}
