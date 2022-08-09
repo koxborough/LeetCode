@@ -1,9 +1,9 @@
 bool isAnagram(char * s, char * t){
-    int* freqs = calloc(26, sizeof(int));
-    int* freqt = calloc(26, sizeof(int));
-    
     if (strlen(s) != strlen(t))
         return 0;
+    
+    int* freqs = calloc(26, sizeof(int));
+    int* freqt = calloc(26, sizeof(int));
     
     int length = strlen(s);
     
@@ -22,6 +22,8 @@ bool isAnagram(char * s, char * t){
             return 0;
         }
     }
-    
+
+    free(freqs);
+    free(freqt);
     return 1;
 }
