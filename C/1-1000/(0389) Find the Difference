@@ -1,0 +1,27 @@
+char findTheDifference(char * s, char * t){
+    int* freqs = calloc(26, sizeof(int));
+    int* freqt = calloc(26, sizeof(int));
+    
+    int length = strlen(s);
+    
+    for (int i = 0; i < length; i++)
+    {
+        freqs[(int)(s[i]) - 97]++;
+        freqt[(int)(t[i]) - 97]++;
+    }
+    freqt[(int)(t[length] - 97)]++;
+    
+    for (int i = 0; i < 26; i++)
+    {
+        if (freqs[i] != freqt[i])
+        {
+            free(freqs);
+            free(freqt);
+            return ((char)(i + 97));
+        }
+    }
+    
+    free(freqs);
+    free(freqt);
+    return '\0';
+}
