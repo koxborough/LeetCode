@@ -1,0 +1,21 @@
+int climbStairs(int n){
+    if (n < 4)
+        return n;
+    
+    int* list = calloc(n, sizeof(int));
+    
+    for (int i = 0; i < 3; i++)
+    {
+        list[i] = i + 1;
+    }
+    
+    for (int i = 3; i < n; i++)
+    {
+        list[i] = list[i - 1] + list[i - 2];
+    }
+    
+    int final = list[n - 1];
+    
+    free(list);
+    return final;
+}
