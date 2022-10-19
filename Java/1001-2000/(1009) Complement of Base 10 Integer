@@ -1,0 +1,32 @@
+class Solution {
+    public int bitwiseComplement(int n) {
+        StringBuilder numBinary = new StringBuilder();
+        StringBuilder complementBinary = new StringBuilder();
+        int complement = 0;
+
+        if (n == 0)
+            return 1;
+
+        while (n > 0)
+        {
+            numBinary.append((n % 2 == 0) ? '0' : '1');
+            n /= 2;
+        }
+        numBinary.reverse();
+        
+        for (int i = 0; i < numBinary.length(); i++)
+            complementBinary.append((numBinary.charAt(i)) == '1' ? '0' : '1');
+
+        if (complementBinary.charAt(complementBinary.length() - 1) == '1')
+            complement++;
+
+        for (int i = 0; i < complementBinary.length() - 1; i++)
+        {
+            int base = (complementBinary.charAt(i) - '0') * 2;
+            int exponent = complementBinary.length() - i - 1;
+            complement += (int)(Math.pow(base, exponent));
+        }
+
+        return complement;
+    }
+}
