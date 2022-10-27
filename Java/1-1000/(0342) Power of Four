@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        if (n < 1)
+            return false;
+
+        int power = 1;
+        int exponent = 1;
+        while (power < Integer.MAX_VALUE && power > 0)
+        {
+            if (power == n)
+                return true;
+            power = (int)(Math.pow(4, exponent));
+            exponent++;
+        }
+        return false;
+    }
+}
