@@ -1,0 +1,22 @@
+class Solution {
+    public int rob(int[] nums) {
+        switch (nums.length)
+        {
+            case 0:
+                return 0;
+            case 1:
+                return nums[0];
+            case 2:
+                return (int)Math.max(nums[0], nums[1]);
+        }
+        
+        int [] toggle = new int[2];
+        toggle[0] = nums[0];
+        toggle[1] = (int)Math.max(nums[0], nums[1]);
+        
+        for (int i = 2; i < nums.length; i++)
+            toggle[i % 2] = (int)Math.max(toggle[i % 2] + nums[i], toggle[(i + 1) % 2]);
+        
+        return toggle[(nums.length + 1) % 2];
+    }
+}
